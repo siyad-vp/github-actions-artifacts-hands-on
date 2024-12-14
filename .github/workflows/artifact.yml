@@ -21,13 +21,14 @@ jobs:
   download:
    needs: build
    runs-on: ubuntu-latest
-
    steps:
    - name: download artifact
      uses: actions/download-artifact@v4
-   - name: copy file
-     run: 
-      |
-      cp hello.txt ./hello.txt
-      cat ./hello.txt
+     with: 
+       name: get artifact
+       path: ./artifacts/
+   - name: show the file content
+     run: cat ./artifacts/hello.txt
+  
+
      
